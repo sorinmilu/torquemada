@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Chestionar</title>
+
+<script src="js/chestionar.js"></script>
+<script src="js/templates.js"></script>
+<script src="js/ejs.js"></script>
+<script src="js/jsonViewer.js"></script>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/jsonViewer.css">
+<link rel="stylesheet" href="css/chestionar.css">
+
+<script>
+    window.onload = function(e){
+        console.log("document.onload");
+        var el = document.getElementById('cjson_content');
+        el.innerHTML = jsonViewer(chestionar, true);
+
+        window.debug_chestionar = true;
+        load_chestionar();
+    }
+
+    function toggledebug() {
+        window.debug_chestionar = !window.debug_chestionar;
+        load_chestionar();
+    }
+
+</script>
+
+
+<body>
+
+<div id="container">
+    <div id="cjson">
+        <div class="paneltitle">JSON Chestionar</div>
+        <div class="panel-content" id="cjson_content"></div>
+    </div>
+    <div id="formular">
+       <div class="paneltitle">Formularul generat</div>
+        <button id="debug" type="button" onclick="toggledebug()">Debug</button>
+        <div  class="panel-content" id="formular_content"></div>
+    </div>
+    <div id="completate">
+        <div class="paneltitle">Variabile completate</div>
+        <button id="completeaza" type="button" onclick="completeaza_variabile()">Completeaza</button>
+        <div  class="panel-content" id="rezultate">
+            <pre id="ansjson"></pre>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
